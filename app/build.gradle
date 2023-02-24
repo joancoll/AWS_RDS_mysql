@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'cat.dam.andy.AWS_RDS_mysql'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "cat.dam.andy.AWS_RDS_mysql"
+        minSdk 28
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //És molt millor utilitzar REST API QUE UTILITZAR llibreries obsoletes amb vulnerabilitats
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+    // implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49' //Funciona. Android li dóna suport
+    // implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'//Android no hi dóna suport ni amb Java 11
+    // implementation group: 'software.aws.rds', name: 'aws-mysql-jdbc', version: '1.1.4'//no funciona
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
